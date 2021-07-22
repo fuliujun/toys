@@ -1,4 +1,4 @@
-import TensorRT as trt
+import tensorrt as trt
 import sys
 def build_engine(onnx_file_path,engine_save_path):
     TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
