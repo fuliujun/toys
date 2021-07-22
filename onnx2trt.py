@@ -21,5 +21,5 @@ if __name__ == "__main__":
     onnx_path_file = sys.argv[1]
     engine_path_file = sys.argv[2]
     build_engine(onnx_path_file,engine_path_file)
-    # inputs = np.random.random((1, 3, 1024, 853)).astype(np.float32)
+    
     
