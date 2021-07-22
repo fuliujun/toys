@@ -6,6 +6,9 @@ def build_engine(onnx_file_path,engine_save_path):
     with trt.Builder(TRT_LOGGER) as builder, builder.create_network(EXPLICIT_BATCH) as network, trt.OnnxParser(network, TRT_LOGGER) as parser:
         with builder.create_builder_config() as config:
             config.max_workspace_size = 1 << 21
+            profile = config.add_optimization_profile()
+            profile.set_shape("foo", (3,200,200),(3,244,244),(3,300,300))
+            config.add_optimization_profile(profile)
             #config.max_batch_size = 1
         with open(onnx_file_path,'rb') as model:
             if not parser.parse(model.read()):
