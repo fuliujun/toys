@@ -7,7 +7,7 @@ def build_engine(onnx_file_path,engine_save_path):
         with builder.create_builder_config() as config:
             config.max_workspace_size = 1 << 31
             profile = builder.create_optimization_profile()
-            profile.set_shape("foo", (1,3,244,244),(4,3,244,244),(8,3,2446,244))
+            profile.set_shape("input:0", (1,3,112,96),(4,3,112,96),(8,3,112,96))
             config.add_optimization_profile(profile)
             with open(onnx_file_path,'rb') as model:
                 if not parser.parse(model.read()):
